@@ -6,37 +6,49 @@
 /*   By: asnaji <asnaji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 14:28:21 by asnaji            #+#    #+#             */
-/*   Updated: 2024/03/14 17:56:40 by asnaji           ###   ########.fr       */
+/*   Updated: 2024/03/14 21:11:39 by asnaji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
 
+int checkvalid(std::string str)
+{
+	int i = 0;
+	while(str[i] && str[i] >= '0' && str[i] <= '9')
+		i++;
+	if(!str[i])
+		return (0);
+	return (1);
+}
+
 void rad_add(Phonebook *book)
 {
-	(void)book;
-	std::string firstname, lastname, nickname, darkest_secret;
-	int phone_number = -1;
+	std::string firstname, lastname, nickname, darkest_secret, phtxt;
 	static int i;
 	if (i == 8)
 		i = 0;
-	std::cout << "enter contact phone number: ";
-	std::cin >> phone_number;
-	while(phone_number <= 0)
+	std::cout << "\033[0;32menter contact phone number: \033[0m";
+	if(!std::getline(std::cin, phtxt) || std::cin.eof())
+		return ;
+	std::cout << "\033[0;32menter contact first name: \033[0m";
+	if(!std::getline(std::cin, firstname) || std::cin.eof())
+		return ;
+	std::cout << "\033[0;32menter contact last name: \033[0m";
+	if(!std::getline(std::cin, lastname) || std::cin.eof())
+		return ;
+	std::cout << "\033[0;32menter contact nickname: \033[0m";
+	if(!std::getline(std::cin, nickname) || std::cin.eof())
+		return ;
+	std::cout << "\033[0;32menter contact darkest secret: \033[0m";
+	if(!std::getline(std::cin, darkest_secret) || std::cin.eof())
+		return ;
+	if((checkvalid(phtxt) || phtxt.empty()) || firstname.empty() || lastname.empty() || nickname.empty() || darkest_secret.empty())
 	{
-		std::cin.clear();
-		std::cout << "invalid phone number try again: ";
-		std::cin >> phone_number;
+		std::cout << "\033[0;31m          INVALID INPUT          \033[0m" << std::endl;
+		return ;
 	}
-	std::cout << "enter contact first name: ";
-	std::cin >> firstname;
-	std::cout << "enter contact last name: ";
-	std::cin >> lastname;
-	std::cout << "enter contact nickname: ";
-	std::cin >> nickname;
-	std::cout << "enter contact darkest secret: ";
-	std::cin >> darkest_secret;
-	book->contacts[i].phone_number = phone_number;
+	book->contacts[i].phone_number = 1;
 	book->contacts[i].firstname = firstname;
 	book->contacts[i].lastname = lastname;
 	book->contacts[i].nickname = nickname;
@@ -44,86 +56,79 @@ void rad_add(Phonebook *book)
 	i++;
 }
 
+void print_inside(std::string str)
+{
+	int x;
+	if(str.length() <= 9)
+	{
+		x = 0;
+		while(str[x])
+		{
+			std::cout << str[x];
+			x++;
+		}
+		while(x < 9)
+		{
+			std::cout << " ";
+			x++;
+		}
+		std::cout << "|";
+	}
+	else
+	{
+		x = 0;
+		while(x < 8)
+		{
+			std::cout << str[x];
+			x++;
+		}
+		std::cout << ".|";
+	}
+}
+
 void print_phonebook(Phonebook *book)
 {
 	int i = 0;
 	int j = 0;
-	int x = 0;
 	std::cout << " -------------------------------------- " << std::endl;
 	std::cout << "|  index |" << "firstname|" << " lastname|" << " nickname|" << std::endl;
 	while(i < 8)
 	{
 		std::cout << "|    " << i << "   |";
 		j = 0;
-		if(book->contacts[i].firstname.length() <= 9)
-		{
-			x = 0;
-			while(book->contacts[i].firstname[x])
-			{
-				std::cout << book->contacts[i].firstname[x];
-				x++;
-			}
-			while(x < 9)
-			{
-				std::cout << " ";
-				x++;
-			}
-			std::cout << "|";
-		}
-		else
-		{
-			while(j < 9)
-				std::cout << book->contacts[i].firstname[j];
-			std::cout << ".|";
-		}
-		
-		if(book->contacts[i].lastname.length() <= 9)
-		{
-			x = 0;
-			while(book->contacts[i].lastname[x])
-			{
-				std::cout << book->contacts[i].lastname[x];
-				x++;
-			}
-			while(x < 9)
-			{
-				std::cout << " ";
-				x++;
-			}
-			std::cout << "|";
-		}
-		else
-		{
-			while(j < 9)
-				std::cout << book->contacts[i].lastname[j];
-			std::cout << ".|";
-		}
-		
-		if(book->contacts[i].nickname.length() <= 9)
-		{
-			x = 0;
-			while(book->contacts[i].nickname[x])
-			{
-				std::cout << book->contacts[i].nickname[x];
-				x++;
-			}
-			while(x < 9)
-			{
-				std::cout << " ";
-				x++;
-			}
-			std::cout << "|";
-		}
-		else
-		{
-			while(j < 9)
-				std::cout << book->contacts[i].nickname[j];
-			std::cout << ".";
-		}
+		print_inside(book->contacts[i].firstname);
+		print_inside(book->contacts[i].lastname);
+		print_inside(book->contacts[i].nickname);
 		std::cout << std::endl;
 		i++;
 	}
 	std::cout << " -------------------------------------- " << std::endl;
+}
+
+void rad_search(Phonebook *book)
+{
+	print_phonebook(book);
+	int index;
+	std::string intxt;
+	std::cout << "\033[0;32mcontact index ? \033[0m";
+	if(!std::getline(std::cin, intxt) || std::cin.eof())
+		return ;
+	if(checkvalid(intxt) || intxt.empty())
+	{
+		std::cout << "\033[0;31m          INVALID INPUT          \033[0m" << std::endl;
+		return ;
+	}
+	index = std::stoi(intxt);
+	if(index >= 0 && index <= 7 && book->contacts[index].firstname.empty())
+	{
+		std::cout << "\033[0;31m          INVALID INDEX          \033[0m" << std::endl;
+		return ;
+	}
+	std::cout << "\033[0;33mPhone number : \033[0m" << book->contacts[index].phone_number << std::endl;
+	std::cout << "\033[0;33mFirst name : \033[0m" << book->contacts[index].firstname << std::endl;
+	std::cout << "\033[0;33mLast name : \033[0m" << book->contacts[index].lastname << std::endl;
+	std::cout << "\033[0;33mNickname : \033[0m" << book->contacts[index].nickname << std::endl;
+	std::cout << "\033[0;33mdarkest secret : \033[0m" << book->contacts[index].darkest_secret << std::endl;
 }
 
 int main()
@@ -132,12 +137,19 @@ int main()
 	Phonebook book;
 	while(RAD)
 	{
-		print_phonebook(&book);
-		std::cout << "ADD?\nSEARCH?\nEXIT?\n";
-		std::cin >> prompt;
+		std::cout << "\033[0;35mwhat do u wanna do [\"ADD\" , \"SEARCH\" , \"EXIT\"] ? \033[0m";
+		if(!std::getline(std::cin, prompt) || std::cin.eof())
+		{
+			std::cout << "EXIT" << std::endl;
+			return 0;
+		}
 		if(prompt == "ADD")
 			rad_add(&book);
-		if(prompt == "EXIT")
+		else if(prompt == "SEARCH")
+			rad_search(&book);
+		else if(prompt == "EXIT")
 			return (0);
+		else
+			std::cout << "\033[0;31m           INVALID COMMAND          \033[0m" << std::endl;
 	}
 }
