@@ -1,13 +1,21 @@
 NAME = megaphone
-CC = c++
+SOURCES = megaphone.cpp
+OBJECTS = $(SOURCES:.cpp=.o)
+CC = g++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 all : $(NAME)
 
-$(NAME) : megaphone.cpp
-	$(CC) $(CPPFLAGS) megaphone.cpp -o $(NAME)
+%.o : %.cpp
+	$(CC) $(CPPFLAGS) -c $< -o $@
+
+$(NAME) : $(OBJECTS)
+	$(CC) $(CPPFLAGS) -o $@ $^
 
 clean : 
+	rm -f $(OBJECTS)
+
+fclean : clean
 	rm -f $(NAME)
 
 re : clean all
