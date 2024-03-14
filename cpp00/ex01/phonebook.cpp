@@ -6,7 +6,7 @@
 /*   By: asnaji <asnaji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 14:28:21 by asnaji            #+#    #+#             */
-/*   Updated: 2024/03/14 17:11:42 by asnaji           ###   ########.fr       */
+/*   Updated: 2024/03/14 17:56:40 by asnaji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void rad_add(Phonebook *book)
 	std::cin >> phone_number;
 	while(phone_number <= 0)
 	{
+		std::cin.clear();
 		std::cout << "invalid phone number try again: ";
 		std::cin >> phone_number;
 	}
@@ -43,12 +44,95 @@ void rad_add(Phonebook *book)
 	i++;
 }
 
+void print_phonebook(Phonebook *book)
+{
+	int i = 0;
+	int j = 0;
+	int x = 0;
+	std::cout << " -------------------------------------- " << std::endl;
+	std::cout << "|  index |" << "firstname|" << " lastname|" << " nickname|" << std::endl;
+	while(i < 8)
+	{
+		std::cout << "|    " << i << "   |";
+		j = 0;
+		if(book->contacts[i].firstname.length() <= 9)
+		{
+			x = 0;
+			while(book->contacts[i].firstname[x])
+			{
+				std::cout << book->contacts[i].firstname[x];
+				x++;
+			}
+			while(x < 9)
+			{
+				std::cout << " ";
+				x++;
+			}
+			std::cout << "|";
+		}
+		else
+		{
+			while(j < 9)
+				std::cout << book->contacts[i].firstname[j];
+			std::cout << ".|";
+		}
+		
+		if(book->contacts[i].lastname.length() <= 9)
+		{
+			x = 0;
+			while(book->contacts[i].lastname[x])
+			{
+				std::cout << book->contacts[i].lastname[x];
+				x++;
+			}
+			while(x < 9)
+			{
+				std::cout << " ";
+				x++;
+			}
+			std::cout << "|";
+		}
+		else
+		{
+			while(j < 9)
+				std::cout << book->contacts[i].lastname[j];
+			std::cout << ".|";
+		}
+		
+		if(book->contacts[i].nickname.length() <= 9)
+		{
+			x = 0;
+			while(book->contacts[i].nickname[x])
+			{
+				std::cout << book->contacts[i].nickname[x];
+				x++;
+			}
+			while(x < 9)
+			{
+				std::cout << " ";
+				x++;
+			}
+			std::cout << "|";
+		}
+		else
+		{
+			while(j < 9)
+				std::cout << book->contacts[i].nickname[j];
+			std::cout << ".";
+		}
+		std::cout << std::endl;
+		i++;
+	}
+	std::cout << " -------------------------------------- " << std::endl;
+}
+
 int main()
 {
 	std::string prompt;
 	Phonebook book;
 	while(RAD)
 	{
+		print_phonebook(&book);
 		std::cout << "ADD?\nSEARCH?\nEXIT?\n";
 		std::cin >> prompt;
 		if(prompt == "ADD")
