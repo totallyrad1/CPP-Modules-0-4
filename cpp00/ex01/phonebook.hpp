@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   phonebook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asnaji <asnaji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/14 14:28:14 by asnaji            #+#    #+#             */
-/*   Updated: 2024/03/14 15:00:50 by asnaji           ###   ########.fr       */
+/*   Created: 2024/03/14 14:28:33 by asnaji            #+#    #+#             */
+/*   Updated: 2024/03/14 16:44:36 by asnaji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#ifndef PHONEBOOK_HPP
+# define PHONEBOOK_HPP
+# include <iostream>
+
+# define RAD 1
+
+class Contact{
+	public:
+		std::string firstname;
+		std::string lastname;
+		std::string nickname;
+		int phone_number;
+		std::string darkest_secret;
+};
+
+class Phonebook{
+	public:
+		int oldest;
+		Contact contacts[8];	
+};
 
 
-int main(int ac, char **av)
-{
-	if (ac == 1)
-	{
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-		return (0);
-	}
-	int i = 1;
-	int j;
-	while(i < ac)
-	{
-		j = 0;
-		while(av[i][j])
-		{
-			std::cout << (unsigned char)toupper(av[i][j]);
-			j++;
-		} 
-		i++;
-	}
-	std::cout << std::endl;
-}
+#endif
