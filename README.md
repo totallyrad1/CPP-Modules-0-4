@@ -1,6 +1,6 @@
 # CPP-Modules-0-4
 
-# important infos : 
+# what i learned in cpp00 so far : 
 
 In C++, classes are user-defined data types that can contain data members (variables) and member functions (methods). Classes serve as blueprints for creating objects, which are instances of those classes. Here's a breakdown of some key concepts related to classes and methods in C++:
 
