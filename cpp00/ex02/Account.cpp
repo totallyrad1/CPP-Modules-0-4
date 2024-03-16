@@ -6,7 +6,7 @@
 /*   By: asnaji <asnaji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 21:47:57 by asnaji            #+#    #+#             */
-/*   Updated: 2024/03/16 02:15:42 by asnaji           ###   ########.fr       */
+/*   Updated: 2024/03/16 03:13:00 by asnaji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ bool	Account::makeWithdrawal( int withdrawal )
 	if(withdrawal > _amount)
 	{
 		_displayTimestamp();
-		std::cout << "index:" << 0 << ";p_amount:" << amount << ";withdrawal:refused" << std::endl;
+		std::cout << "index:" << _accountIndex << ";p_amount:" << amount << ";withdrawal:refused" << std::endl;
 		return false;
 	}
 	else{
