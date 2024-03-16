@@ -12,6 +12,7 @@
 
 #include "Account.hpp"
 #include <iostream>
+#include <ctime>
 
 int Account::_nbAccounts = 0;
 int Account::_totalAmount = 0;
@@ -83,7 +84,13 @@ int		Account::checkAmount( void ) const
 
 void	Account::_displayTimestamp( void )	
 {
-	std::cout << "[] ";
+	time_t currtime;
+	time(&currtime);
+	struct tm* loctimerad = localtime(&currtime);
+
+	char timetxt[20];
+	strftime(timetxt, sizeof(timetxt), "%y%m%d_%H%M%S", loctimerad);
+	std::cout << "[" <<timetxt << "]" <<" ";
 }
 
 void	Account::displayAccountsInfos( void )

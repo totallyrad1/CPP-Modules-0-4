@@ -17,8 +17,15 @@
 
 # define RAD 1
 
+class Phonebook;
+
 class Contact{
-	public:
+	public :
+		void rad_add(Phonebook *book);
+		void rad_search(Phonebook *book);
+		void print_phonebook(Phonebook *book);
+
+	private:
 		std::string firstname;
 		std::string lastname;
 		std::string nickname;

@@ -12,6 +12,56 @@
 
 #include "phonebook.hpp"
 
+// void Contact::set_firstname(std::string str)
+// {
+// 	firstname = str;
+// }
+
+// void set_lastname(std::string str)
+// {
+// 	lastname = str;
+// }
+
+// void set_nickname(std::string str)
+// {
+// 	nickname = str;
+// }
+
+// void set_phonenumber(std::string str)
+// {
+// 	phone_number = str;
+// }
+
+// void set_darkest_secret(std::string str)
+// {
+// 	darkest_secret = str;
+// }
+
+// std::string get_firstname(void)
+// {
+// 	return (firstname);
+// }
+
+// std::string get_lastname(void)
+// {
+// 	return (lastname);
+// }
+
+// std::string get_nickname(void)
+// {
+// 	return (nickname);
+// }
+
+// std::string get_phonenumber(void)
+// {
+// 	return (phone_number);
+// }
+
+// std::string get_darkest_secret(void)
+// {
+// 	return (darkest_secret);
+// }
+
 int checkvalid(std::string str)
 {
 	int i = 0;
@@ -22,7 +72,7 @@ int checkvalid(std::string str)
 	return (1);
 }
 
-void rad_add(Phonebook *book)
+void Contact::rad_add(Phonebook *book)
 {
 	std::string firstname, lastname, nickname, darkest_secret, phtxt;
 	static int i;
@@ -86,7 +136,7 @@ void print_inside(std::string str)
 	}
 }
 
-void print_phonebook(Phonebook *book)
+void Contact::print_phonebook(Phonebook *book)
 {
 	int i = 0;
 	std::cout << " -------------------------------------- " << std::endl;
@@ -103,7 +153,7 @@ void print_phonebook(Phonebook *book)
 	std::cout << " -------------------------------------- " << std::endl;
 }
 
-void rad_search(Phonebook *book)
+void Contact::rad_search(Phonebook *book)
 {
 	print_phonebook(book);
 	int index;
@@ -133,6 +183,7 @@ int main()
 {
 	std::string prompt;
 	Phonebook book;
+	Contact contacts;
 	while(RAD)
 	{
 		std::cout << "\033[0;35mwhat do u wanna do [\"ADD\" , \"SEARCH\" , \"EXIT\"] ? \033[0m";
@@ -142,9 +193,9 @@ int main()
 			return 0;
 		}
 		if(prompt == "ADD")
-			rad_add(&book);
+			contacts.rad_add(&book);
 		else if(prompt == "SEARCH")
-			rad_search(&book);
+			contacts.rad_search(&book);
 		else if(prompt == "EXIT")
 			return (0);
 		else
