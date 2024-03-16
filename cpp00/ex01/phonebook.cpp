@@ -6,7 +6,7 @@
 /*   By: asnaji <asnaji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 14:28:21 by asnaji            #+#    #+#             */
-/*   Updated: 2024/03/14 21:11:39 by asnaji           ###   ########.fr       */
+/*   Updated: 2024/03/16 14:29:31 by asnaji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void rad_add(Phonebook *book)
 		std::cout << "\033[0;31m          INVALID INPUT          \033[0m" << std::endl;
 		return ;
 	}
-	book->contacts[i].phone_number = 1;
+	book->contacts[i].phone_number = phtxt;
 	book->contacts[i].firstname = firstname;
 	book->contacts[i].lastname = lastname;
 	book->contacts[i].nickname = nickname;
@@ -89,13 +89,11 @@ void print_inside(std::string str)
 void print_phonebook(Phonebook *book)
 {
 	int i = 0;
-	int j = 0;
 	std::cout << " -------------------------------------- " << std::endl;
 	std::cout << "|  index |" << "firstname|" << " lastname|" << " nickname|" << std::endl;
 	while(i < 8)
 	{
 		std::cout << "|    " << i << "   |";
-		j = 0;
 		print_inside(book->contacts[i].firstname);
 		print_inside(book->contacts[i].lastname);
 		print_inside(book->contacts[i].nickname);
@@ -118,7 +116,7 @@ void rad_search(Phonebook *book)
 		std::cout << "\033[0;31m          INVALID INPUT          \033[0m" << std::endl;
 		return ;
 	}
-	index = std::stoi(intxt);
+	index = atoi(intxt.c_str());
 	if(index >= 0 && index <= 7 && book->contacts[index].firstname.empty())
 	{
 		std::cout << "\033[0;31m          INVALID INDEX          \033[0m" << std::endl;
