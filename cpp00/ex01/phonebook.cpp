@@ -6,61 +6,11 @@
 /*   By: asnaji <asnaji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 14:28:21 by asnaji            #+#    #+#             */
-/*   Updated: 2024/03/16 14:29:31 by asnaji           ###   ########.fr       */
+/*   Updated: 2024/03/16 16:24:07 by asnaji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
-
-// void Contact::set_firstname(std::string str)
-// {
-// 	firstname = str;
-// }
-
-// void set_lastname(std::string str)
-// {
-// 	lastname = str;
-// }
-
-// void set_nickname(std::string str)
-// {
-// 	nickname = str;
-// }
-
-// void set_phonenumber(std::string str)
-// {
-// 	phone_number = str;
-// }
-
-// void set_darkest_secret(std::string str)
-// {
-// 	darkest_secret = str;
-// }
-
-// std::string get_firstname(void)
-// {
-// 	return (firstname);
-// }
-
-// std::string get_lastname(void)
-// {
-// 	return (lastname);
-// }
-
-// std::string get_nickname(void)
-// {
-// 	return (nickname);
-// }
-
-// std::string get_phonenumber(void)
-// {
-// 	return (phone_number);
-// }
-
-// std::string get_darkest_secret(void)
-// {
-// 	return (darkest_secret);
-// }
 
 int checkvalid(std::string str)
 {
