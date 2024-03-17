@@ -6,7 +6,7 @@
 /*   By: asnaji <asnaji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 13:51:36 by asnaji            #+#    #+#             */
-/*   Updated: 2024/03/17 15:39:22 by asnaji           ###   ########.fr       */
+/*   Updated: 2024/03/17 16:17:45 by asnaji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,32 +25,15 @@ int checkvalid(std::string str)
 
 void print_inside(std::string str)
 {
-	int x;
 	if(str.length() <= 9)
 	{
-		x = 0;
-		while(str.length() + x < 9)
-		{
-			std::cout << " ";
-			x++;
-		}
-		x = 0;
-		while(str[x])
-		{
-			std::cout << str[x];
-			x++;
-		}
+		std::cout << std::setw(10) << str;
 		std::cout << "|";
 	}
 	else
 	{
-		x = 0;
-		while(x < 8)
-		{
-			std::cout << str[x];
-			x++;
-		}
-		std::cout << ".|";
+		std::cout << std::setw(10) << str.substr(0, 9) + ".";
+		std::cout << "|";
 	}
 }
 
@@ -91,18 +74,25 @@ void Contact::rad_add(Phonebook *book)
 void Contact::print_phonebook(Phonebook *book)
 {
 	int i = 0;
-	std::cout << " -------------------------------------- " << std::endl;
-	std::cout << "|  index |" << "firstname|" << " lastname|" << " nickname|" << std::endl;
+	std::cout << " ------------------------------------------- " << std::endl;
+	std::cout << "|" << std::setw(10) << "index";
+	std::cout << "|";
+	std::cout << std::setw(10) << "firstname";
+	std::cout << "|";
+	std::cout << std::setw(10) << "lastname";
+	std::cout << "|";
+	std::cout << std::setw(10) << " nickname";
+	std::cout << "|" << std::endl;
 	while(i < 8)
 	{
-		std::cout << "|       " << i << "|";
+		std::cout << "|" << std::setw(10) << i << "|";
 		print_inside(book->contacts[i].firstname);
 		print_inside(book->contacts[i].lastname);
 		print_inside(book->contacts[i].nickname);
 		std::cout << std::endl;
 		i++;
 	}
-	std::cout << " -------------------------------------- " << std::endl;
+	std::cout << " ------------------------------------------- " << std::endl;
 }
 
 void Contact::rad_search(Phonebook *book)
@@ -113,7 +103,7 @@ void Contact::rad_search(Phonebook *book)
 	std::cout << "\033[0;32mcontact index ? \033[0m";
 	if(!std::getline(std::cin, intxt) || std::cin.eof())
 		return ;
-	if(checkvalid(intxt) || intxt.empty())
+	if(checkvalid(intxt) || intxt.empty() || intxt.length() > 2)
 	{
 		std::cout << "\033[0;31m          INVALID INPUT          \033[0m" << std::endl;
 		return ;
