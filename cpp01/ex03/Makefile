@@ -1,12 +1,12 @@
 NAME = banksters
 SOURCES = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
-CC = g++
+CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 all : $(NAME)
 
-%.o : %.cpp Account.hpp
+%.o : %.cpp Weapon.hpp HumanA.hpp HumanB.hpp
 	$(CC) $(CPPFLAGS) -c $< -o $@
 
 $(NAME) : $(OBJECTS)

@@ -6,7 +6,7 @@
 /*   By: asnaji <asnaji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 01:55:07 by asnaji            #+#    #+#             */
-/*   Updated: 2024/03/17 03:16:21 by asnaji           ###   ########.fr       */
+/*   Updated: 2024/03/17 16:28:26 by asnaji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main()
 
 	std:: cout << "String A address: "<< &A << std::endl;
 	std:: cout << "stringPTR address: " << stringPTR << std::endl;
-	std:: cout << "stringREF address: " <<&stringREF << std::endl;
+	std:: cout << "stringREF address: " << &stringREF << std::endl;
 
 	std:: cout << "String A content: " << A << std::endl;
 	std:: cout << "stringPTR content: " << *stringPTR << std::endl;
