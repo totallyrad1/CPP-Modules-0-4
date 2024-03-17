@@ -6,7 +6,7 @@ CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 all : $(NAME)
 
-%.o : %.cpp phonebook.hpp
+%.o : %.cpp Phonebook.hpp Contact.hpp
 	$(CC) $(CPPFLAGS) -c $< -o $@
 
 $(NAME) : $(OBJECTS)
