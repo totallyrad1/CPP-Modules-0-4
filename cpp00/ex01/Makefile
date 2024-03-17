@@ -1,8 +1,8 @@
 NAME = PhoneBook
 SOURCES = Phonebook.cpp Contact.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
-CC = g++
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98
+CC = c++
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
 all : $(NAME)
 
