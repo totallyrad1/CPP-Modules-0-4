@@ -1,12 +1,12 @@
-NAME = banksters
-SOURCES = Account.cpp tests.cpp
+NAME = Brain
+SOURCES = main.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 CC = g++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 all : $(NAME)
 
-%.o : %.cpp Account.hpp
+%.o : %.cpp 
 	$(CC) $(CPPFLAGS) -c $< -o $@
 
 $(NAME) : $(OBJECTS)

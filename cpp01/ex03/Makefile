@@ -1,5 +1,5 @@
 NAME = banksters
-SOURCES = Account.cpp tests.cpp
+SOURCES = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 CC = g++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98

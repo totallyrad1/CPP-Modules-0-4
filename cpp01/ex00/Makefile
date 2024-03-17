@@ -1,12 +1,12 @@
-NAME = banksters
-SOURCES = Account.cpp tests.cpp
+NAME = BraiiiiiiinnnzzzZ
+SOURCES = main.cpp newZombie.cpp randomChump.cpp Zombie.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 CC = g++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 all : $(NAME)
 
-%.o : %.cpp Account.hpp
+%.o : %.cpp Zombie.hpp
 	$(CC) $(CPPFLAGS) -c $< -o $@
 
 $(NAME) : $(OBJECTS)
