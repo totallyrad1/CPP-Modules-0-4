@@ -6,7 +6,7 @@
 /*   By: asnaji <asnaji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 13:51:36 by asnaji            #+#    #+#             */
-/*   Updated: 2024/03/17 16:17:45 by asnaji           ###   ########.fr       */
+/*   Updated: 2024/03/21 10:32:09 by asnaji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,18 +98,18 @@ void Contact::print_phonebook(Phonebook *book)
 void Contact::rad_search(Phonebook *book)
 {
 	print_phonebook(book);
-	int index;
+	int index = -1;
 	std::string intxt;
 	std::cout << "\033[0;32mcontact index ? \033[0m";
 	if(!std::getline(std::cin, intxt) || std::cin.eof())
 		return ;
-	if(checkvalid(intxt) || intxt.empty() || intxt.length() > 2)
+	if(checkvalid(intxt) || intxt.empty())
 	{
 		std::cout << "\033[0;31m          INVALID INPUT          \033[0m" << std::endl;
 		return ;
 	}
 	index = atoi(intxt.c_str());
-	if(index >= 0 && index <= 7 && book->contacts[index].firstname.empty())
+	if(index < 0 || index > 7 || book->contacts[index].firstname.empty())
 	{
 		std::cout << "\033[0;31m          INVALID INDEX          \033[0m" << std::endl;
 		return ;

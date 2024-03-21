@@ -2,7 +2,7 @@ NAME = PhoneBook
 SOURCES = Phonebook.cpp Contact.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 CC = c++
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -g
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 all : $(NAME)
 
@@ -20,4 +20,4 @@ fclean : clean
 
 re : clean all
 
-PHONY : all re clean
+PHONY : all re clean fclean
