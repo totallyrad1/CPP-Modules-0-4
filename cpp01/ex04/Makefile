@@ -1,12 +1,12 @@
-NAME = weapons
-SOURCES = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
+NAME = sed
+SOURCES = main.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 all : $(NAME)
 
-%.o : %.cpp Weapon.hpp HumanA.hpp HumanB.hpp
+%.o : %.cpp
 	$(CC) $(CPPFLAGS) -c $< -o $@
 
 $(NAME) : $(OBJECTS)
