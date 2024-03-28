@@ -14,10 +14,19 @@ void Harl::complain( std::string level ){
 	switch(value){
 		case 0:
 			debug();
+			info();
+			warning();
+			error();
+			break;
 		case 1:
 			info();
+			warning();
+			error();
+			break;
 		case 2:
 			warning();
+			error();
+			break;
 		case 3:
 			error();
 			break;
