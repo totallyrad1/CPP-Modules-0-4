@@ -4,8 +4,8 @@
 #include "Fixed.hpp"
 class Point{
 	private:
-		Fixed x;
-		Fixed y;
+		const Fixed x;
+		const Fixed y;
 	public:
 		Point();
 		Point(const float n1, const float n2);
