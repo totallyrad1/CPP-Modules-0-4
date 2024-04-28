@@ -37,10 +37,10 @@ Fixed::Fixed(const float num){
 }
 
 float Fixed::toFloat( void ) const{
-	return (fp_number >> fractional_bits);
+	return float(fp_number);
 }
 int Fixed::toInt( void ) const{
-	return (fp_number >> fractional_bits);
+	return int(fp_number);
 }
 
 std::ostream &operator<<(std::ostream &out, const Fixed &obj){

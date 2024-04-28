@@ -2,7 +2,7 @@ NAME = BSP
 SOURCES = Fixed.cpp main.cpp Point.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 CC = c++
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -g
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 all : $(NAME)
 
