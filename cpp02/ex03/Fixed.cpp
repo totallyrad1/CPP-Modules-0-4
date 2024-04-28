@@ -37,14 +37,14 @@ Fixed::Fixed(const float num){
 }
 
 float Fixed::toFloat( void ) const{
-	return (fp_number >> fractional_bits);
+	return float(fp_number);
 }
 int Fixed::toInt( void ) const{
-	return (fp_number >> fractional_bits);
+	return int(fp_number);
 }
 
 std::ostream &operator<<(std::ostream &out, const Fixed &obj){
-	out << obj.getRawBits() / (double)256;
+	out << obj.getRawBits() / double(256);
 	return out;
 }
 
@@ -85,37 +85,28 @@ bool Fixed::operator!=(const Fixed &obj){
 		return 0;
 }
 
-const Fixed &Fixed::operator+(const Fixed &obj){
-	Fixed *result;
-	result = this;
-	result->fp_number = this->fp_number + obj.fp_number;
-	return *result;
+Fixed &Fixed::operator+(const Fixed &obj){
+	this->fp_number = this->fp_number + obj.fp_number;
+	return *this;
 }
-const Fixed &Fixed::operator*(const Fixed &obj){
-	Fixed *result;
-	result = this;
-	result->fp_number = this->fp_number * obj.fp_number;
-	return *result;
+Fixed &Fixed::operator*(const Fixed &obj){
+	this->fp_number = (this->fp_number * obj.fp_number) / 256;
+	return *this;
 }
-const Fixed &Fixed::operator-(const Fixed &obj){
-	Fixed *result;
-	result = this;;
-	result->fp_number = this->fp_number - obj.fp_number;
-	return *result;
+Fixed &Fixed::operator-(const Fixed &obj){
+	this->fp_number = this->fp_number - obj.fp_number;
+	return *this;
 }
-const Fixed &Fixed::operator/(const Fixed &obj){
-	Fixed *result;
-	result = this;
-	result->fp_number = this->fp_number / obj.fp_number;
-	return *result;
+Fixed &Fixed::operator/(const Fixed &obj){
+	this->fp_number = Fixed(this->toFloat() / obj.toFloat()).getRawBits();
+	return *this;
 }
 
 Fixed &Fixed::operator++(){
 	this->fp_number++;
 	return *this;
 }
-Fixed Fixed::operator++(int number){
-	(void)number;
+Fixed Fixed::operator++(int){
 	Fixed tmp = *this;
 	++fp_number;
 	return tmp;
@@ -124,8 +115,7 @@ Fixed &Fixed::operator--(){
 	this->fp_number--;
 	return *this;
 }
-Fixed Fixed::operator--(int number){
-	(void)number;
+Fixed Fixed::operator--(int){
 	Fixed tmp = *this;
 	--fp_number;
 	return tmp;

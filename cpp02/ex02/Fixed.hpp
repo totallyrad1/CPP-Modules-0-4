@@ -26,15 +26,15 @@ class Fixed{
 		bool operator==(const Fixed &obj);
 		bool operator!=(const Fixed &obj);
 
-		const Fixed &operator+(const Fixed &obj);
-		const Fixed &operator*(const Fixed &obj);
-		const Fixed &operator-(const Fixed &obj);
-		const Fixed &operator/(const Fixed &obj);
+		Fixed &operator+(const Fixed &obj);
+		Fixed &operator*(const Fixed &obj);
+		Fixed &operator-(const Fixed &obj);
+		Fixed &operator/(const Fixed &obj);
 
 		Fixed &operator++();
-		Fixed operator++(int number);
+		Fixed operator++(int);
 		Fixed &operator--();
-		Fixed operator--(int number);
+		Fixed operator--(int);
 		
 		static const Fixed &min(const Fixed &obj,const Fixed &obj2);
 		static const Fixed &max(const Fixed &obj,const Fixed &obj2);

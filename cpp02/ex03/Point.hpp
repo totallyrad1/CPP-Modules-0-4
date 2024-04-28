@@ -13,7 +13,7 @@ class Point{
 		Point(const Point &);
 		Point operator=(const Point &obj);
 		bool bsp( Point const a, Point const b, Point const c, Point const point);
-		float calc_tri_space(Point const tri1, Point const tri2, Point const tri3);
+		Fixed calc_tri_space(Point const tri1, Point const tri2, Point const tri3);
 };
 
 #endif
