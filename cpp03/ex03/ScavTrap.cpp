@@ -39,17 +39,3 @@ void ScavTrap::attack(const std::string& target){
 	else
 		std::cout << "ScavTrap " << name << " dont have enough energy to attack or ur just dead\n";
 }
-void ScavTrap::takeDamage(unsigned int amount){
-	std::cout << "ScavTrap " << name << " took " << amount << " of dmg !\n";
-	hit_points -= amount;
-}
-void ScavTrap::beRepaired(unsigned int amount){
-	if(energypoints > 0 && hit_points > 0)
-	{
-		std::cout << "ScavTrap " << name << " heals for " << amount << " of health !\n";
-		hit_points += amount;
-		energypoints--;
-	}
-	else
-		std::cout << "ScavTrap " << name << " dont have enough energy to berepaired or ur just dead\n";
-}
