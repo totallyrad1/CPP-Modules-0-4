@@ -10,6 +10,9 @@ Character::Character(std::string name){
 }
 
 Character::~Character(){
+	int i = 0;
+	while(i < 4)
+		delete AMaterias[i++];
 	delete []AMaterias;
 }
 

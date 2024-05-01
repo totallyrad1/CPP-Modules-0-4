@@ -8,6 +8,9 @@ MateriaSource::MateriaSource(){
 	this->memory[3] = NULL;
 }
 MateriaSource::~MateriaSource(){
+	int i = 0;
+	while(i < 4)
+		delete memory[i++];
 	delete [] memory;
 }
 MateriaSource &MateriaSource::operator=(const MateriaSource &){

@@ -4,7 +4,7 @@ AMateria::AMateria(){
 	// std::cout << "default amateria constructor called\n";
 }
 AMateria::~AMateria(){
-	std::cout << "amateria destructor called\n";
+	// std::cout << "amateria destructor called\n";
 }
 AMateria::AMateria(const AMateria &obj){
 	std::cout << "copy amateria constructor called\n";

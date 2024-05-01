@@ -6,8 +6,14 @@
 #include "MateriaSource.hpp"
 #include "IMateriaSource.hpp"
 
+void f()
+{
+	system("leaks Materia");
+}
+
 int main()
 {
+	atexit(f);
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
