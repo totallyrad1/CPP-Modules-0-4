@@ -7,7 +7,9 @@ MateriaSource::MateriaSource(){
 	this->memory[2] = NULL;
 	this->memory[3] = NULL;
 }
-MateriaSource::~MateriaSource(){}
+MateriaSource::~MateriaSource(){
+	delete [] memory;
+}
 MateriaSource &MateriaSource::operator=(const MateriaSource &){
 	return *this;
 }
@@ -24,7 +26,6 @@ void MateriaSource::learnMateria(AMateria* m){
 	if(i < 4)
 	{
 		memory[i] = m;
-		// std::cout << "amateria saved\n";
 	}
 	else
 		std::cout << "no available space in materias memory\n";
