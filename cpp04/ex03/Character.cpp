@@ -33,16 +33,24 @@ std::string const & Character::getName() const{
 }
 void Character::equip(AMateria* m){
 	int i = 0;
+	int check = 1;
+	while(i < 4)
+	{
+		if(AMaterias[i] == m)
+			check = 0;
+		i++;
+	}
+	i = 0;
 	while(i < 4)
 	{
 		if(AMaterias[i] == NULL)
 			break;
 		i++;
 	}
-	if(i < 4)
+	if(i < 4 && check)
 		AMaterias[i] = m;
 	else
-		std::cout << "unavailable space , cant equip the materia\n";
+		std::cout << "unavailable space or materia already eqiuped, cant equip the materia\n";
 }
 void Character::unequip(int idx){
 	if(idx < 4 || AMaterias[idx] == NULL)
