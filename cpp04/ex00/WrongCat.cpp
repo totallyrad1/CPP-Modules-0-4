@@ -14,3 +14,7 @@ WrongCat &WrongCat::operator=(const WrongCat &obj){
 WrongCat::WrongCat(const WrongCat &obj){
 	*this = obj;
 }
+
+void WrongCat::makeSound() const{
+	std::cout << "wrongcat sound\n";
+}

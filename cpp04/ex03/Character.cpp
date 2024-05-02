@@ -1,4 +1,6 @@
 #include "Character.hpp"
+#include "Ice.hpp"
+#include "Cure.hpp"
 
 Character::Character(std::string name){
 	this->name = name;
@@ -17,11 +19,11 @@ Character::~Character(){
 }
 
 Character &Character::operator=(const Character &obj){
-	this->AMaterias = obj.AMaterias;
-	this->AMaterias[0] = obj.AMaterias[0];
-	this->AMaterias[1] = obj.AMaterias[1];
-	this->AMaterias[2] = obj.AMaterias[2];
-	this->AMaterias[3] = obj.AMaterias[3];
+	this->AMaterias = new AMateria*[4];
+	this->AMaterias[0] = obj.AMaterias[0]->clone();
+	this->AMaterias[1] = obj.AMaterias[1]->clone();
+	this->AMaterias[2] = obj.AMaterias[2]->clone();
+	this->AMaterias[3] = obj.AMaterias[3]->clone();
 	this->name = obj.name;
 	return *this;
 }
@@ -51,7 +53,7 @@ void Character::equip(AMateria* m){
 		AMaterias[i] = m;
 	else
 	{
-		if(m){
+		if(m && check){
 			delete m;
 			std::cout << "materia deleted to avoid memory leaks \n";
 		}

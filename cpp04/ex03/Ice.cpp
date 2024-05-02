@@ -13,7 +13,7 @@ Ice &Ice::operator=(const Ice &obj){
 Ice::~Ice(){}
 Ice* Ice::clone() const{
 	Ice *newice = new Ice();
-
+	newice->name = this->name;
 	return newice;
 }
 

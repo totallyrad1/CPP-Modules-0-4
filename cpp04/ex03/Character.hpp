@@ -4,6 +4,9 @@
 #include "AMateria.hpp"
 
 class Character : public ICharacter{
+	protected:
+		AMateria **AMaterias;
+		std::string name;
 	public:
 		Character(std::string);
 		~Character();

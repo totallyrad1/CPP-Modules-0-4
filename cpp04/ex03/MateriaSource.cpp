@@ -20,19 +20,27 @@ MateriaSource::MateriaSource(const MateriaSource &){}
 
 void MateriaSource::learnMateria(AMateria* m){
 	int i = 0;
+	int check = 1;
+	while(i < 4)
+	{
+		if(memory[i] == m)
+			check = 0;
+		i++;
+	}
+	i = 0;
 	while(i < 4)
 	{
 		if(memory[i] == NULL)
 			break;
 		i++;
 	}
-	if(i < 4){
+	if(i < 4 && check){
 		memory[i] = m;
 	}
 	else
 	{
 		std::cout << "no available space in materias memory\n";
-		if(m)
+		if(m && check)
 		{
 			delete m;
 			std::cout << "materia destroyed to avoid memory leaks\n";

@@ -14,7 +14,7 @@ Cure::~Cure(){}
 
 Cure* Cure::clone() const{
 	Cure *newcure = new Cure();
-
+	newcure->name = this->name;
 	return newcure;
 }
 void Cure::use(ICharacter& target){
