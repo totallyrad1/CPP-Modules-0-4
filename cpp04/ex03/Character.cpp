@@ -50,7 +50,13 @@ void Character::equip(AMateria* m){
 	if(i < 4 && check)
 		AMaterias[i] = m;
 	else
+	{
+		if(m){
+			delete m;
+			std::cout << "materia deleted to avoid memory leaks \n";
+		}
 		std::cout << "unavailable space or materia already eqiuped, cant equip the materia\n";
+	}
 }
 void Character::unequip(int idx){
 	if(idx < 4 || AMaterias[idx] == NULL)

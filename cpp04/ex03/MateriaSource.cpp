@@ -26,12 +26,18 @@ void MateriaSource::learnMateria(AMateria* m){
 			break;
 		i++;
 	}
-	if(i < 4)
-	{
+	if(i < 4){
 		memory[i] = m;
 	}
 	else
+	{
 		std::cout << "no available space in materias memory\n";
+		if(m)
+		{
+			delete m;
+			std::cout << "materia destroyed to avoid memory leaks\n";
+		}
+	}
 }
 AMateria* MateriaSource::createMateria(std::string const & type){
 	if(type == "ice"){
