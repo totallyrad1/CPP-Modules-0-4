@@ -67,8 +67,8 @@ void Character::unequip(int idx){
 		std::cout << "no materia equiped at slot n " << idx << "\n";
 }
 void Character::use(int idx, ICharacter& target){
-	if(idx < 4 || AMaterias[idx] == NULL)
-		AMaterias[idx]->use(target);
-	else
+	if(idx >= 4 || AMaterias[idx] == NULL)
 		std::cout << "no materia equiped at slot n " << idx << "\n";
+	else
+		AMaterias[idx]->use(target);
 }
