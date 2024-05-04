@@ -20,10 +20,11 @@ Character::~Character(){
 
 Character &Character::operator=(const Character &obj){
 	this->AMaterias = new AMateria*[4];
-	this->AMaterias[0] = obj.AMaterias[0]->clone();
-	this->AMaterias[1] = obj.AMaterias[1]->clone();
-	this->AMaterias[2] = obj.AMaterias[2]->clone();
-	this->AMaterias[3] = obj.AMaterias[3]->clone();
+	for(int i = 0;i < 4; i++)
+	{
+		if(this->AMaterias[i] && obj.AMaterias[i])
+			this->AMaterias[i] = obj.AMaterias[i]->clone();
+	}
 	this->name = obj.name;
 	return *this;
 }
