@@ -22,7 +22,7 @@ Character &Character::operator=(const Character &obj){
 	this->AMaterias = new AMateria*[4];
 	for(int i = 0;i < 4; i++)
 	{
-		if(this->AMaterias[i] && obj.AMaterias[i])
+		if(this->AMaterias && this->AMaterias[i] && obj.AMaterias && obj.AMaterias[i])
 			this->AMaterias[i] = obj.AMaterias[i]->clone();
 	}
 	this->name = obj.name;
