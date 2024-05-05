@@ -27,6 +27,8 @@ void MateriaSource::learnMateria(AMateria* m){
 			check = 0;
 		i++;
 	}
+	if(!check)
+		return ;
 	i = 0;
 	while(i < 4)
 	{
